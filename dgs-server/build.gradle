@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+group = 'me.mouseeye'
+version = 'unspecified'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+generateJava{
+    schemaPaths = ["${projectDir}/src/main/resources/schema"] // List of directories containing schema files
+    packageName = 'com.example.packagename' // The package name to use to generate sources
+    generateClientv2 = true // Enable generating the type safe query API
+}
